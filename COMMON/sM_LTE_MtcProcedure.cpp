@@ -31,13 +31,13 @@ Version:        1.0
 Author:         Dennis M Senyonjo
 
 
-Copyright (c) 2011. .
+Copyright (c) 2011.
 
 
 Change history:
 
     VERSION     DATE/AUTHOR                 COMMENT
-    1.0         18.01.2011 / Komulainen     Original
+    1.0         18.01.2011 / Dennis M S     Original
 
 */
 
@@ -112,46 +112,46 @@ void sM_LTE_MtcProcedure::start(void)
   /* UE->SS  RRC: SecurityModeComplete                                          */
   /******************************************************************************/
 
-  if( EV_OK == retcode )
-  {
-    RUN_NEWP_STATEMACHINE ( sM_LTE_AsSecurity, null,
-      (
-      xmlSecurityModeCommand,                            // SecurityModeCommand
-      LteReferenceTestConditions->getDefAsCiphProtAlg(), // cipheringAlgorithm
-      LteReferenceTestConditions->getDefAsIntProtAlg(),  // integrityProtAlgorithm
-      xmlSecurityModeComplete                            // SecurityModeComplete
-      )
-    );
-
-    RUN_NEWP_STATEMACHINE ( sM_SystemTC, null, ( TC_PRELIMINARY_VERDICT, retcode=MLAPI::lastRunReturnCode ));
-  }
-
-  if( DedicatedContext == false )
-  {
-    /******************************************************************************/
-    /* SS->UE  RRC: RRCConnectionReconfiguration                                  */
-    /******************************************************************************/
-
-    if( EV_OK == retcode )
-    {
-      RUN_NEWP_STATEMACHINE ( sM_LTE_RrcConnectionReconfiguration, null,
-        (
-        xmlRRCConnectionReconfiguration,         // RRCConnectionReconfiguration
-        std::string(""),                         // AttachAccept
-        std::string(""),                         // ActivateDefaultEpsBearerContextRequest
-        xmlRRCConnectionReconfigurationComplete, // RRCConnectionReconfigurationComplete
-        DataGenerator                            // Datagenerator
-        )
-      );
-
-      RUN_NEWP_STATEMACHINE ( sM_SystemTC, null, ( TC_PRELIMINARY_VERDICT, retcode=MLAPI::lastRunReturnCode ));
-
-      notifyCompletion(retcode);
-    }
-    else
-    {
-      notifyCompletion(EV_FAIL);
-    }
+	if( EV_OK == retcode )
+	{
+		RUN_NEWP_STATEMACHINE ( sM_LTE_AsSecurity, null,
+							   (
+								xmlSecurityModeCommand,                            // SecurityModeCommand
+								LteReferenceTestConditions->getDefAsCiphProtAlg(), // cipheringAlgorithm
+								LteReferenceTestConditions->getDefAsIntProtAlg(),  // integrityProtAlgorithm
+								xmlSecurityModeComplete                            // SecurityModeComplete
+								)
+							   );
+		
+		RUN_NEWP_STATEMACHINE ( sM_SystemTC, null, ( TC_PRELIMINARY_VERDICT, retcode=MLAPI::lastRunReturnCode ));
+	}
+	
+	if( DedicatedContext == false )
+	{
+		/******************************************************************************/
+		/* SS->UE  RRC: RRCConnectionReconfiguration                                  */
+		/******************************************************************************/
+		
+		if( EV_OK == retcode )
+		{
+			RUN_NEWP_STATEMACHINE ( sM_LTE_RrcConnectionReconfiguration, null,
+								   (
+									xmlRRCConnectionReconfiguration,         // RRCConnectionReconfiguration
+									std::string(""),                         // AttachAccept
+									std::string(""),                         // ActivateDefaultEpsBearerContextRequest
+									xmlRRCConnectionReconfigurationComplete, // RRCConnectionReconfigurationComplete
+									DataGenerator                            // Datagenerator
+									)
+								   );
+			
+			RUN_NEWP_STATEMACHINE ( sM_SystemTC, null, ( TC_PRELIMINARY_VERDICT, retcode=MLAPI::lastRunReturnCode ));
+			
+			notifyCompletion(retcode);
+		}
+		else
+		{
+			notifyCompletion(EV_FAIL);
+		}
   }
   else
   {
