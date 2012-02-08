@@ -76,25 +76,25 @@ ON_TIMER( sM_LTE_TestModeDeactivation, DeactivateTestModeComplete, RS_Default_Ti
 
 ON_ETC_PDU( sM_LTE_TestModeDeactivation, DeactivateTestModeComplete, EtcDeactivateRbTestModeComplete )
 {
-  rsDefaultTimer->reset();
-
-  GCO_DUMP(pdu);
-
-  PE_PRINT(" UE -> SS  RRC: UlInformationTransfer" );
-  PE_PRINT("           NAS: DEACTIVATE TEST MODE COMPLETE" );
-
-  if ( xmlDeactivateTestModeComplete != "" )
-  {
-    if ( GCO_MATCHF(root, xmlDeactivateTestModeComplete.c_str()) )
-    {
-      PE_PRINT("####### Message is OK #######" );
-    }
-    else
-    {
-      PE_ERR("####### Message is NOK #######" );
-      NOTIFY_COMPLETION_FAILURE();
-    }
-  }
+	rsDefaultTimer->reset();
+	
+	GCO_DUMP(pdu);
+	
+	PE_PRINT(" UE -> SS  RRC: UlInformationTransfer" );
+	PE_PRINT("           NAS: DEACTIVATE TEST MODE COMPLETE" );
+	
+	if ( xmlDeactivateTestModeComplete != "" )
+	{
+		if ( GCO_MATCHF(root, xmlDeactivateTestModeComplete.c_str()) )
+		{
+			PE_PRINT("####### Message is OK #######" );
+		}
+		else
+		{
+			PE_ERR("####### Message is NOK #######" );
+			NOTIFY_COMPLETION_FAILURE();
+		}
+	}
 
   PE_PRINT("           TC: Test mode deactivation procedure completed" );
 

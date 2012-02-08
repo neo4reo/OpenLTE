@@ -15,23 +15,23 @@
 
 DERIVED_STATE_DLL( sM_LTE_TestModeDeactivation, sM_LteMlDefault, DLLLTECOMMON )
 {
-  protected:
-
-  std::string xmlDeactivateTestMode;
-  std::string xmlDeactivateTestModeComplete;
-  int         UEid;
-
-  public:
-
-  sM_LTE_TestModeDeactivation (
-    std::string& _xmlDeactivateTestMode,
-    std::string& _xmlDeactivateTestModeComplete
-  )
-  {
-    xmlDeactivateTestMode         = _xmlDeactivateTestMode;
-    xmlDeactivateTestModeComplete = _xmlDeactivateTestModeComplete;
-    UEid                          = 0;
-  }
+protected:
+	
+	std::string xmlDeactivateTestMode;
+	std::string xmlDeactivateTestModeComplete;
+	int         UEid;
+	
+public:
+	
+	sM_LTE_TestModeDeactivation (
+								 std::string& _xmlDeactivateTestMode,
+								 std::string& _xmlDeactivateTestModeComplete
+								 )
+	{
+		xmlDeactivateTestMode         = _xmlDeactivateTestMode;
+		xmlDeactivateTestModeComplete = _xmlDeactivateTestModeComplete;
+		UEid                          = 0;
+	}
 
   // Destructor
 

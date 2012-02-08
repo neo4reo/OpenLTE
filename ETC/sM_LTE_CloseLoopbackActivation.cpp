@@ -76,24 +76,24 @@ ON_TIMER( sM_LTE_CloseLoopbackActivation, CloseUeTestLoopComplete, RS_Default_Ti
 
 ON_ETC_PDU( sM_LTE_CloseLoopbackActivation, CloseUeTestLoopComplete, EtcCloseUeTestLoopComplete )
 {
-  rsDefaultTimer->reset();
-
-  GCO_DUMP(pdu);
-
-  PE_PRINT(" UE -> SS  RRC: UlInformationTransfer" );
-  PE_PRINT("           NAS: CLOSE UE TEST LOOP COMPLETE" );
-
-  if ( xmlCloseUeTestLoopComplete != "" )
-  {
-    if ( GCO_MATCHF(root, xmlCloseUeTestLoopComplete.c_str()) )
-    {
-      PE_PRINT("####### Message is OK #######" );
-    }
-    else
-    {
-      PE_ERR("####### Message is NOK #######" );
-      NOTIFY_COMPLETION_FAILURE();
-    }
+	rsDefaultTimer->reset();
+	
+	GCO_DUMP(pdu);
+	
+	PE_PRINT(" UE -> SS  RRC: UlInformationTransfer" );
+	PE_PRINT("           NAS: CLOSE UE TEST LOOP COMPLETE" );
+	
+	if ( xmlCloseUeTestLoopComplete != "" )
+	{
+		if ( GCO_MATCHF(root, xmlCloseUeTestLoopComplete.c_str()) )
+		{
+			PE_PRINT("####### Message is OK #######" );
+		}
+		else
+		{
+			PE_ERR("####### Message is NOK #######" );
+			NOTIFY_COMPLETION_FAILURE();
+		}
   }
 
   PE_PRINT("           TC: Close UE Test Loop activation procedure completed" );

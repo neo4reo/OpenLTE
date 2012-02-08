@@ -15,18 +15,18 @@
 
 DERIVED_STATEMACHINE_DLL( sM_LTE_CloseLoopbackActivation, sM_LteMlDefault, DLLLTECOMMON )
 {
-  protected:
-
-  std::string xmlCloseUeTestLoop;
-  std::string xmlCloseUeTestLoopComplete;
-  int         UEIdentity;
-
-  public:
-
-  sM_LTE_CloseLoopbackActivation (
-    std::string& _xmlCloseUeTestLoop,
-    std::string& _xmlCloseUeTestLoopComplete
-  )
+protected:
+	
+	std::string xmlCloseUeTestLoop;
+	std::string xmlCloseUeTestLoopComplete;
+	int         UEIdentity;
+	
+public:
+	
+	sM_LTE_CloseLoopbackActivation (
+									std::string& _xmlCloseUeTestLoop,
+									std::string& _xmlCloseUeTestLoopComplete
+									)
   {
     xmlCloseUeTestLoop         = _xmlCloseUeTestLoop;
     xmlCloseUeTestLoopComplete = _xmlCloseUeTestLoopComplete;

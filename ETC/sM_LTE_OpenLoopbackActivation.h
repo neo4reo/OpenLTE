@@ -21,29 +21,30 @@ DERIVED_STATEMACHINE_DLL( sM_LTE_OpenLoopbackActivation, sM_LteMlDefault, DLLLTE
   std::string xmlOpenUeTestLoopComplete;
   int         UEid;
 
-  public:
-
-  sM_LTE_OpenLoopbackActivation (
-    std::string& _xmlOpenUeTestLoop,
-    std::string& _xmlOpenUeTestLoopComplete
-  )
-  {
-    xmlOpenUeTestLoop         = _xmlOpenUeTestLoop;
-    xmlOpenUeTestLoopComplete = _xmlOpenUeTestLoopComplete;
-    UEid                      = 0;
-  }
-
-  // Destructor
-
-  ~sM_LTE_OpenLoopbackActivation()
-  {
-  }
-
-  void start(void);
-
+public:
+	
+	sM_LTE_OpenLoopbackActivation (
+								   std::string& _xmlOpenUeTestLoop,
+								   std::string& _xmlOpenUeTestLoopComplete
+								   )
+	{
+		xmlOpenUeTestLoop         = _xmlOpenUeTestLoop;
+		xmlOpenUeTestLoopComplete = _xmlOpenUeTestLoopComplete;
+		UEid                      = 0;
+	}
+	
+	// Destructor
+	
+	~sM_LTE_OpenLoopbackActivation()
+	{
+	}
+	
+	void start(void);
+	
 };
 
 #endif // _SM_LTE_OPENLOOPACTIVATION_H_
+
 
 /******************************************************************************/
 /* END OF FILE                                                                */
